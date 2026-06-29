@@ -21,7 +21,12 @@ jobs:
         java-version: '17'
 
     - name: Download Gradle wrapper jar
-      run: curl -L "https://raw.githubusercontent.com/gradle/gradle/v8.9.0/gradle/wrapper/gradle-wrapper.jar" -o gradle/wrapper/gradle-wrapper.jar
+      run: |
+        curl -L "https://services.gradle.org/distributions/gradle-8.9-bin.zip" -o gradle-8.9-bin.zip
+        unzip -p gradle-8.9-bin.zip "gradle-8.9/lib/plugins/gradle-wrapper-*.jar" > gradle/wrapper/gradle-wrapper.jar 2>/dev/null || \
+        unzip gradle-8.9-bin.zip -d gradle-tmp && \
+        find gradle-tmp -name "gradle-wrapper.jar" | head -1 | xargs -I{} cp {} gradle/wrapper/gradle-wrapper.jar && \
+        rm -rf gradle-tmp gradle-8.9-bin.zip
 
     - name: Grant Execute Permission to Gradlew
       run: chmod +x gradlew
