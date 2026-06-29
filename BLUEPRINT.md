@@ -86,5 +86,5 @@ This document contains the structural blueprint, design details, development pha
 - **2026-06-29 12:32**: Generated and added the standard Gradle wrapper files (`gradlew`, `gradlew.bat`, and `gradle/wrapper/gradle-wrapper.jar`) to resolve the GitHub Actions checkout failure and verify the project configuration. Tested compilation and confirmed everything is fully stable.
 - **2026-06-29 12:42**: Cleaned and regenerated `gradle-wrapper.jar` natively via the Gradle Wrapper task after removing any corrupted jar states, and confirmed that `.gitattributes` enforces binary mode for JARs.
 - **2026-06-29 12:49**: Updated `.github/workflows/build.yml` with a step to download the Gradle wrapper jar directly using `curl` at runtime prior to execution, avoiding binary corruption issues during commits or checkouts.
-- **2026-06-29 12:53**: Replaced the direct GitHub raw URL with a robust unzip extraction technique from the official Gradle distribution zip inside the GitHub Action runner to secure a verified and uncorrupted binary representation of the Gradle Wrapper JAR.
+- **2026-06-29 13:03**: Replaced the Gradle wrapper JAR manual extraction step with the official `gradle/actions/setup-gradle@v3` action in `.github/workflows/build.yml` to automatically provision the Gradle environment and dynamically generate the wrapper JAR natively on the runner.
 
