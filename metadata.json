@@ -1,0 +1,6 @@
+{
+  "name": "Template Launcher",
+  "description": "A high-performance custom Android launcher with diagnostics logger, customizable grids, custom dock, app drawer with filter, and Room database persistence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
